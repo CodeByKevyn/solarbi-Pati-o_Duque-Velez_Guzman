@@ -22,7 +22,7 @@ data/silver/   telemetria_limpia.csv
 etl/           simulador.py, limpieza.py, cargar_postgres.py, run_etl.py
 sql/           schema.sql
 powerbi/       solarbi_dashboard.pbix
-docs/          PDF de la consulta
+docs/          PDF de la consulta y capturas
 ```
 
 `cargar_postgres.py` y `schema.sql` son la primera versión de la carga (tabla `public.telemetria`). El flujo que vale es `run_etl.py`.
@@ -65,6 +65,10 @@ En el Programador de tareas de Windows sería una tarea diaria a las 00:00 que e
 ## Power BI
 
 `powerbi/solarbi_dashboard.pbix` está conectado a las tablas de PostgreSQL (`silver.lectura_5min` y `dwh.fact_energia_dia`). Al actualizar los datos, Power BI pide la conexión a tu propio PostgreSQL.
+
+## Grafana
+
+Se instaló Grafana OSS 13.2.3 en Windows con el instalador .msi y la interfaz abre en `localhost:3000`, pero no se pudo agregar PostgreSQL como data source: Windows bloqueó el componente de PostgreSQL de Grafana (`gpx_grafana_postgresql_datasource_windows_amd64.exe`) porque no pudo confirmar quién lo publicó. En el equipo está activado Smart App Control y se decidió no desactivarlo. Las capturas del error están en `docs/capturas/` y se explican en el PDF (ruta alterna del taller: documentar el error y explorar play.grafana.org).
 
 ## Quién hizo qué
 
